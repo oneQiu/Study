@@ -1,0 +1,13 @@
+{
+  "name": "study",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.21",
+    "ts-node": "^10.9.1"
+  },
+  "dependencies": {
+    "react": "^18.2.0"
+  }
+}
