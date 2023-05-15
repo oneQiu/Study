@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>babel转换</title>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+<body>
+<h1>Babel</h1>
+<script type="text/jsx">
+    const x = () => {
+        console.log('asd');
+    };
+    x();
+    const y = <div>123</div>;
+    console.log(y)
+</script>
+</body>
+</html>

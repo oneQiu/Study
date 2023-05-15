@@ -50,7 +50,7 @@ export const HostSingleton = 27;
 
 ### 初始化过程经历了什么？
 
-#### `beginWork`
+#### 递: `beginWork`
 
 > 源码路径: `react-renconciler/src/ReactFiberBeginWork.js`
 
@@ -60,5 +60,9 @@ type beginWork = (current: Fiber | null, workInProgress: Fiber, renderLanes: Lan
 
 `current`: 当前节点信息，在初始化过程中为空，只会在挂载最初创建一个`hostRoot`根节点的时候存在，更新阶段一直存在。
 所以可以根据`current !== null`来判断当前是处于`mount`还是`update`阶段。
-`workInProgress`: 当前节点信息，在你执行更新或挂载时候的新节点信息，会用来对比`diff`变化。
+`workInProgress`: 当前工作流，当前节点信息，在你执行更新或挂载时候的新节点信息，会用来对比`diff`变化。
 `renderLanes`: 渲染通道，可以理解为优先级。
+
+在`beginWork`阶段会根据`workInProgress.tag`去判断执行不同的更新逻辑。
+
+#### 归: `completeWork`
