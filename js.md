@@ -4,13 +4,13 @@
 
 ### 声明
 
-- `var`: 声明一个函数范围或全局范围内的变量，具备`变量提升`，如果在全局作用域内创建变量的时候会在window上面挂载变量。
-    - 变量提升: 任何使用`var`声明的变量都将会在代码执行前提前创建好变量，初始值为`undefined`。
-    - 函数提升: 优先于变量提升，并且会进行赋值。
+- `var`: 声明一个函数范围或全局范围内的变量，具备`变量提升`，如果在全局作用域内创建变量的时候会在 window 上面挂载变量。
+  - 变量提升: 任何使用`var`声明的变量都将会在代码执行前提前创建好变量，初始值为`undefined`。
+  - 函数提升: 优先于变量提升，并且会进行赋值。
 - `let`: `es6`新增语法，声明一个具有`块级作用域`的变量，且不具备变量提升，存在`暂时性死区`。
 - `const`: 同为`es6`语法，声明`块级作用域`的常量，基础类型的值不可修改，引用类型不可修改引用地址，但是可以直接操作属性。
-    - 块级作用域: 以每一个块语句为域，一对花括号为界限。
-    - 暂时性死区: 当一个代码块开始到变量到创建到这一个阶段即为`暂时性死区`，访问会抛出错误，死区到判定是代码的执行顺序，而不是代码编写的顺序。
+  - 块级作用域: 以每一个块语句为域，一对花括号为界限。
+  - 暂时性死区: 当一个代码块开始到变量到创建到这一个阶段即为`暂时性死区`，访问会抛出错误，死区到判定是代码的执行顺序，而不是代码编写的顺序。
 
 PS：声明一共存在六种方式`var let const import class function`
 
@@ -37,25 +37,27 @@ PS：声明一共存在六种方式`var let const import class function`
 
 ```typescript
 class Base {
-  name: string;
+	name: string;
 
-  constructor(name) {
-    this.name = name;
-  }
+	constructor(name) {
+		this.name = name;
+	}
 }
 
-class Instance extends Base { // 继承
-  age: number;
-  #sex: 1 | 1; // 似有属性
+class Instance extends Base {
+	// 继承
+	age: number;
+	#sex: 1 | 1; // 私有属性
 
-  constructor(age) { // 构造
-    super('QiuQiu'); // 调用父类方法
-    this.age = age;
-  }
+	constructor(age) {
+		// 构造
+		super('QiuQiu'); // 调用父类方法
+		this.age = age;
+	}
 
-  static staticFunc() {
-    // 静态方法，可以直接调用，无法访问`this`
-  }
+	static staticFunc() {
+		// 静态方法，可以直接调用，无法访问`this`
+	}
 }
 ```
 
@@ -75,12 +77,20 @@ class Instance extends Base { // 继承
 
 ```typescript
 const [x, y, z] = [1, 2, 3];
-const {a, b} = {a: 1, b: 2};
+const { a, b } = { a: 1, b: 2 };
 ```
 
 ### 新的扩展方法
 
 #### 数组
+
+- `Array.from`：将`可迭代对象`或类数组转换，获取到一个浅拷贝的数组
+- `includes`：数组中是否存在查找值，返回`Bool`
+- `find`：数组中
+- `findIndex`
+- `reduce`
+- `at`：存在兼容问题
+- `fill`
 
 #### 对象
 
@@ -120,6 +130,7 @@ const {a, b} = {a: 1, b: 2};
 - `Promise.race`：同样接受多个`Promise`任务，只要有一个`Promise`结束就会直接结束当前的状态，可以理解为`Array.some`
 
 `Promise`为什么不能被`try catch`捕获错误？
+
 > 当`Promise`没有添加`.catch`的时候才会往抛出错误。首先我们需要知道`JS事件循环机制`，`try catch`
 > 是同步任务，而`Promise.catch`是微任务，当它执行到错误阶段的时候，已经不在当前的执行栈中，所以无法被当前所在的`try catch`
 > 所捕获
@@ -133,11 +144,11 @@ const {a, b} = {a: 1, b: 2};
 
 ```typescript
 try {
-  // 去掉 await 则不会被当前catch住 
-  await new Promise(() => {
-    throw Error('这里出错了')
-  })
+	// 去掉 await 则不会被当前catch住
+	await new Promise(() => {
+		throw Error('这里出错了');
+	});
 } catch (e) {
-  console.log('try catch error')
+	console.log('try catch error');
 }
 ```
