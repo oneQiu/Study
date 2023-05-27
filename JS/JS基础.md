@@ -179,6 +179,7 @@ PS：`set`和`map`都存在这些方法`forEach keys values has size clear entri
 
 > `() => void`
 > 更加简短的函数使用方式，并且自身不存在`this arguments new.target super`
+> 箭头函数不支持构造函数，即无法`new`调用
 
 ### `Promise`
 

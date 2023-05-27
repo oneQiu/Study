@@ -1,9 +1,9 @@
-const obj = new Proxy({ a: 1 }, {
-  get(target, p, v) {
-    console.log(target, p, v);
-    if (p === 'prototype') return null
-    return target[p]
-  }
-})
+const someAsyncThing = function () {
+  return new Promise(function (resolve, reject) {
+    // 下面一行会报错，因为x没有声明
+    resolve(x + 2);
+  });
+};
 
-console.log(obj.prototype)
+someAsyncThing()
+console.log(12312)
