@@ -222,3 +222,13 @@ try {
 	console.log('try catch error');
 }
 ```
+
+### Reflect
+
+它和`Object`对象一样，可以被我们拿来修改对象的行为，并且也会存在一些`Object`对象上的方法，比如`Object.defineProperty`，也把一些命令式语法添加到`Reflect`对象上面，偏向函数式编程。
+
+```JavaScript
+'assign' in Object; // true
+Reflect.has(Object, 'assign'); // true
+```
+
